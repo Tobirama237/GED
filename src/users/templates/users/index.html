@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  
+    <div class="auth">
+      <div class="card">
+        <div class="auth__header text-center">
+          <a href="/">
+            <img src="{% static 'img/favicon.ico' %}" alt="icon" />
+          </a>
+      <h1>Renplir les informations</h1></div>
+      <form method="POST">
+        {% csrf_token %}
+        
+         <div class="form__field">
+           <label for="formInput#text">object: </label>
+          
+          <input type="text" name="subject" class="form-control" placeholder="objet du message">
+        </div>
+        
+          <div class="form__field">
+            <label for="formInput#text">Message : </label>
+          
+            <input type="text" name="message" class="form-control" placeholder="saisiser votre message">
+        </div>
+        
+         <div class="form__field">
+               <label for="formInput#text">À : </label>
+          
+          <input type="email" name="email" class="form-control" placeholder="entrez l'adresese mail du destinateur">
+        </div>
+        <button type="submit" class="btn btn-primary">envoyer</button>
+      </form>
+    </div>
+  </div>
+
+
+  {% endblock %}

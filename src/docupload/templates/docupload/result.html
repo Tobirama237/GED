@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+
+<!-- Main Section -->
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>resultat de la Recherche</h2>
+        </div></div>
+      </section>
+            
+    <!-- Search Result: DevList -->
+    
+    <section class="projectsList">
+      {% if documents %}
+      <div class="grid grid--three">
+            {% for document in documents %}
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'document' document.id %}" class="project">
+                <div class="card__body">
+                  <h3 class="project__title">{{document.libelleDoc}}</h3>
+                  <p class="project__author"> par &nbsp; <a class="project__author" href="{% url 'user-profile' document.operator.id %}">{{document.operator.name}}</a></p>
+                  <p class="project_tags">Ajouté le:  <span class="tag tag--pill tag--main">{{document.createdDate}}</span>
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      {%else%}
+    <center><h3 style="text-align:center; color:yellow; background: green; width: 600px" id="answer">aucun resultat trouver</h3></center>
+
+        <style type="text/css">
+        #search_result {
+        display: none;
+          }
+        </style>
+
+        {%endif%}    
+     
+  {% if documents.has_other_pages %}
+          
+        
+
+        
+            <ul class="pagination">
+             {% if documents.has_previous %}
+           <li class="waves-effect"><a href="?page=
+           {{ documents.previous_page_number }}{% if request.GET.query %}&query={{ request.GET.query }}{% endif %}"><i
+          class="material-icons text-primary">&laquo;</i></a></li>
+           {% else %}
+            <li class="disabled"><a href="#!"><i class="material-icons text-primary">&laquo;</i></a></li>
+             {% endif %}
+              {% for num in documents.paginator.page_range %}
+                {% if documents.number == num %}
+          <li class="active"><a href="#!">{{ num }}</a></li>
+              {% else %}
+            <li class="waves-effect"><a
+        href="?page={{ num }}{% if request.GET.query %}&query={{ request.GET.query }}{% endif %}">{{ num }}</a></li>
+            {% endif %}
+         {% endfor %}
+            {% if documents.has_next %}
+          <li class="waves-effect"><a
+      href="?page={{ documents.next_page_number }}{% if request.GET.query %}&query={{ request.GET.query }}{% endif %}"><i
+    class="material-icons">&raquo;</i></a></li>
+        {% else %}
+       <li class="disabled"><a href="#!"><i class="material-icons">&raquo;</i></a></li>
+      {% endif %}
+      {% endif %}
+      
+       
+
+
+</section>
+    
+</main>
+{% endblock %}
+
+
+

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Etes-vous sûr de vouloir supprimer "{{object}}" ?</p>
+        <a href="{% url 'documents' %}">Retour</a>
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+/*------------------------
+START CONFIGURATION
+------------------------*/
+html,
+body{
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/*------------------------
+NAVBAR
+------------------------*/
+#btn-nav{
+    width: 110px;
+    float: right;
+    margin-right: 50px;
+}
+
+/*------------------------
+FOOTER
+------------------------*/
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+#footer,
+.push{
+    height: 50px;
+    font-size: 13px;
+}
+
+/*------------------------
+LOGIN
+------------------------*/
+#btn-envoyer{
+    width: 90px;
+}
+#doc{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
